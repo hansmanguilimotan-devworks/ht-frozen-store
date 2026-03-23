@@ -43,6 +43,11 @@
       <section class="panel panel--wide" aria-labelledby="dashboardTitle">
         <div class="snapshot-grid" aria-label="Daily snapshot">
           <article class="snapshot-card">
+            <span>Current Capital Investment</span>
+            <strong id="currentCapitalInvestment">PHP 0.00</strong>
+            <small>Total business capital saved</small>
+          </article>
+          <article class="snapshot-card">
             <span>Total Sales Today (PHP)</span>
             <strong id="snapshotSales">PHP 0.00</strong>
           </article>
@@ -53,6 +58,14 @@
           <article class="snapshot-card">
             <span>Net Cash on Hand</span>
             <strong id="snapshotCash">PHP 0.00</strong>
+          </article>
+          <article class="snapshot-card" id="recoveryCard">
+            <span>Current Profit/Loss Status</span>
+            <strong id="investmentRecovery">PHP 0.00</strong>
+            <small id="investmentRecoveryLabel">Status: Breakeven</small>
+            <div class="health-progress">
+              <div id="healthProgressBar" class="health-progress__bar" style="width: 0%"></div>
+            </div>
           </article>
         </div>
 
@@ -94,15 +107,17 @@
           <div class="breakeven-card__copy">
             <p class="section-tag">Breakeven</p>
             <h3>See when the stall has recovered the starting investment.</h3>
-            <p id="breakevenText">Add your initial investment to calculate progress.</p>
+            <p id="breakevenText">Add your total business investment to calculate breakeven progress.</p>
           </div>
 
           <form id="investmentForm" class="inline-form">
             <label>
-              Initial Investment (PHP)
-              <input type="number" min="0" step="0.01" id="initialInvestment" placeholder="Example: 15000">
+              Total Business Investment (PHP)
+              <input type="number" min="0" step="0.01" id="initialInvestment" placeholder="Example: 100000">
             </label>
-            <button type="submit" class="button button--primary">Save Amount</button>
+            <div class="inline-form__actions">
+              <button type="button" class="button button--primary button--hidden" id="saveInvestmentButton" disabled>Save Amount</button>
+            </div>
           </form>
 
           <div class="progress">
@@ -138,13 +153,16 @@
           </label>
           <label>
             Quantity Sold
-            <input type="number" id="saleQuantity" min="1" step="1" required>
+            <div class="input-with-unit">
+              <input type="number" id="saleQuantity" min="0.01" step="0.01" required>
+              <button type="button" class="unit-toggle unit-toggle--pcs" id="saleUnitToggle" data-unit="pcs">pcs</button>
+            </div>
           </label>
           <label>
             Price Per Item (PHP)
             <input type="number" id="salePrice" min="0" step="0.01" required>
           </label>
-          <button type="submit" class="button button--primary button--full">Add Sale</button>
+          <button type="button" class="button button--primary button--full" id="addSaleButton">Add Sale</button>
         </form>
 
         <div class="table-card">
@@ -190,13 +208,20 @@
           </label>
           <label>
             Quantity
-            <input type="number" id="inventoryQuantity" min="1" step="1" required>
+            <div class="input-with-unit">
+              <input type="number" id="inventoryQuantity" min="0.01" step="0.01" required>
+              <button type="button" class="unit-toggle unit-toggle--pcs" id="inventoryUnitToggle" data-unit="pcs">pcs</button>
+            </div>
+          </label>
+          <label>
+            Unit Cost (PHP)
+            <input type="number" id="inventoryUnitCost" min="0" step="0.01" placeholder="For Stock In purchases">
           </label>
           <label>
             Reorder Level
             <input type="number" id="inventoryReorder" min="0" step="1" value="5" required>
           </label>
-          <button type="submit" class="button button--primary button--full">Update Stock</button>
+          <button type="button" class="button button--primary button--full" id="updateStockButton">Update Stock</button>
         </form>
 
         <div class="table-card">
@@ -260,7 +285,7 @@
             Amount (PHP)
             <input type="number" id="expenseAmount" min="0" step="0.01" required>
           </label>
-          <button type="submit" class="button button--primary button--full">Add Expense</button>
+          <button type="button" class="button button--primary button--full" id="addExpenseButton">Add Expense</button>
         </form>
 
         <div class="table-card">
@@ -288,7 +313,9 @@
   </template>
 
   <datalist id="productCatalog"></datalist>
+  <div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>
