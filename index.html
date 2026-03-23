@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frozen Store Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Frozen Store Financial Management System</p>
+        <h1>H&amp;T Frozen Foods Store</h1>
+        <p class="hero__text">Track daily sales, stock, expenses, and profit in one clear view.</p>
+        <p class="hero__subtext">
+          Built for fast use on a tablet or laptop in a busy market stall. Everything is large,
+          readable, and easy to update.
+        </p>
+        <p class="hero__printstamp" id="printTimestamp"></p>
+      </div>
+
+      <div class="hero__summary" aria-label="Today's summary">
+        <div class="summary-card">
+          <span>Today's Sales</span>
+          <strong id="todaySales">PHP 0.00</strong>
+        </div>
+        <div class="summary-card">
+          <span>Today's Expenses</span>
+          <strong id="todayExpenses">PHP 0.00</strong>
+        </div>
+        <div class="summary-card">
+          <span>Today's Profit/Loss</span>
+          <strong id="todayProfit">PHP 0.00</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout" id="main-dashboard-container">
+      <section class="panel panel--wide" aria-labelledby="dashboardTitle">
+        <div class="snapshot-grid" aria-label="Daily snapshot">
+          <article class="snapshot-card">
+            <span>Total Sales Today (PHP)</span>
+            <strong id="snapshotSales">PHP 0.00</strong>
+          </article>
+          <article class="snapshot-card">
+            <span>Total Expenses Today (PHP)</span>
+            <strong id="snapshotExpenses">PHP 0.00</strong>
+          </article>
+          <article class="snapshot-card">
+            <span>Net Cash on Hand</span>
+            <strong id="snapshotCash">PHP 0.00</strong>
+          </article>
+        </div>
+
+        <div class="panel__actions">
+          <button type="button" class="button button--secondary no-print" id="printReportButton">Print Daily Report</button>
+        </div>
+
+        <div class="panel__header">
+          <div>
+            <p class="section-tag">Overview</p>
+            <h2 id="dashboardTitle">Financial Dashboard</h2>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="metric-card accent-sales">
+            <span>Total Sales</span>
+            <strong id="totalSales">PHP 0.00</strong>
+            <small>All recorded sales</small>
+          </article>
+          <article class="metric-card accent-expenses">
+            <span>Total Expenses</span>
+            <strong id="totalExpenses">PHP 0.00</strong>
+            <small>Rent, electricity, and stock purchases</small>
+          </article>
+          <article class="metric-card accent-profit">
+            <span>Net Profit/Loss</span>
+            <strong id="netProfit">PHP 0.00</strong>
+            <small>Sales minus expenses</small>
+          </article>
+          <article class="metric-card accent-stock">
+            <span>Items Low in Stock</span>
+            <strong id="lowStockCount">0</strong>
+            <small>Based on reorder level</small>
+          </article>
+        </div>
+
+        <div class="breakeven-card">
+          <div class="breakeven-card__copy">
+            <p class="section-tag">Breakeven</p>
+            <h3>See when the stall has recovered the starting investment.</h3>
+            <p id="breakevenText">Add your initial investment to calculate progress.</p>
+          </div>
+
+          <form id="investmentForm" class="inline-form">
+            <label>
+              Initial Investment (PHP)
+              <input type="number" min="0" step="0.01" id="initialInvestment" placeholder="Example: 15000">
+            </label>
+            <button type="submit" class="button button--primary">Save Amount</button>
+          </form>
+
+          <div class="progress">
+            <div id="breakevenBar" class="progress__bar" style="width: 0%"></div>
+          </div>
+          <p class="progress__label" id="breakevenLabel">0% recovered</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="salesTitle">
+        <div class="panel__header">
+          <div>
+            <p class="section-tag">Daily Sales</p>
+            <h2 id="salesTitle">Record Item Sold</h2>
+          </div>
+        </div>
+
+        <div class="quick-add no-print" aria-label="Quick-add items">
+          <button type="button" class="button button--quick no-print" data-quick-item="Hotdog">Hotdog</button>
+          <button type="button" class="button button--quick no-print" data-quick-item="Siomai">Siomai</button>
+          <button type="button" class="button button--quick no-print" data-quick-item="Chicken">Chicken</button>
+          <button type="button" class="button button--quick no-print" data-quick-item="Pork">Pork</button>
+        </div>
+
+        <form id="salesForm" class="form-grid no-print">
+          <label>
+            Date
+            <input type="date" id="saleDate" required>
+          </label>
+          <label>
+            Item Name
+            <input type="text" id="saleItem" list="productCatalog" placeholder="Search item name" autocomplete="off" required>
+          </label>
+          <label>
+            Quantity Sold
+            <input type="number" id="saleQuantity" min="1" step="1" required>
+          </label>
+          <label>
+            Price Per Item (PHP)
+            <input type="number" id="salePrice" min="0" step="0.01" required>
+          </label>
+          <button type="submit" class="button button--primary button--full">Add Sale</button>
+        </form>
+
+        <div class="table-card">
+          <table id="salesTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th class="action-col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="salesTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="inventoryTitle">
+        <div class="panel__header">
+          <div>
+            <p class="section-tag">Inventory</p>
+            <h2 id="inventoryTitle">Track Stock In and Out</h2>
+          </div>
+        </div>
+
+        <form id="inventoryForm" class="form-grid no-print">
+          <label>
+            Date
+            <input type="date" id="inventoryDate" required>
+          </label>
+          <label>
+            Item Name
+            <input type="text" id="inventoryItem" placeholder="Example: Siomai Pack" required>
+          </label>
+          <label>
+            Movement
+            <select id="inventoryType" required>
+              <option value="in">Stock In</option>
+              <option value="out">Stock Out</option>
+              <option value="spoilage">Spoilage</option>
+            </select>
+          </label>
+          <label>
+            Quantity
+            <input type="number" id="inventoryQuantity" min="1" step="1" required>
+          </label>
+          <label>
+            Reorder Level
+            <input type="number" id="inventoryReorder" min="0" step="1" value="5" required>
+          </label>
+          <button type="submit" class="button button--primary button--full">Update Stock</button>
+        </form>
+
+        <div class="table-card">
+          <table id="inventoryTable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>On Hand</th>
+                <th>Reorder</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-card">
+          <table id="inventoryLogTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Item</th>
+                <th>Movement</th>
+                <th>Qty</th>
+                <th class="action-col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryLogTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="expenseTitle">
+        <div class="panel__header">
+          <div>
+            <p class="section-tag">Expenses</p>
+            <h2 id="expenseTitle">Log Daily Costs</h2>
+          </div>
+        </div>
+
+        <form id="expenseForm" class="form-grid no-print">
+          <label>
+            Date
+            <input type="date" id="expenseDate" required>
+          </label>
+          <label>
+            Category
+            <select id="expenseCategory" required>
+              <option value="Electricity">Electricity</option>
+              <option value="Rent">Rent</option>
+              <option value="Inventory Purchase">Inventory Purchase</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label>
+            Notes
+            <input type="text" id="expenseNote" placeholder="Optional details">
+          </label>
+          <label>
+            Amount (PHP)
+            <input type="number" id="expenseAmount" min="0" step="0.01" required>
+          </label>
+          <button type="submit" class="button button--primary button--full">Add Expense</button>
+        </form>
+
+        <div class="table-card">
+          <table id="expensesTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Notes</th>
+                <th>Amount</th>
+                <th class="action-col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="expenseTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="emptyStateTemplate">
+    <tr>
+      <td class="empty-state">No records yet.</td>
+    </tr>
+  </template>
+
+  <datalist id="productCatalog"></datalist>
+
+  <script src="app.js"></script>
+</body>
+</html>
