@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H&amp;T Frozen Foods Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="logo-block">
+          <span class="logo-badge">H&amp;T</span>
+          <div>
+            <p class="eyebrow">Neighborhood Grocery</p>
+            <a class="logo-text" href="#">FROZEN FOODS STORE</a>
+          </div>
+        </div>
+
+        <form class="search-bar" id="search-form" role="search">
+          <label class="sr-only" for="site-search">Search products</label>
+          <input
+            id="site-search"
+            type="search"
+            placeholder="Search frozen goods, drinks, produce..."
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#categories">Categories</a>
+          </nav>
+          <div class="social-links" aria-label="Social links">
+            <a
+              href="https://www.facebook.com/chona.sabellon.manguilimotan"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/linked_hans/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-section" id="home">
+          <div class="hero-overlay">
+            <p class="hero-kicker">Fresh chicken cuts. Frozen favorites. Everyday value.</p>
+            <h1>H&amp;T: Your Neighborhood Source for Fresh Chicken &amp; Frozen Delights</h1>
+            <p class="hero-copy">
+              Bring home quality chicken, ready-to-cook freezer staples, and trusted
+              household essentials prepared for fresh, convenient family meals.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#shop">Shop Deals</a>
+              <a class="secondary-btn" href="#categories">Browse Categories</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="categories-section" id="categories">
+          <div class="section-heading">
+            <p class="section-tag">Shop by aisle</p>
+            <h2>Popular Categories</h2>
+          </div>
+
+          <div class="categories-grid" id="category-list">
+            <article class="category-card is-active" data-category="Frozen Foods" tabindex="0" role="button" aria-pressed="true">
+              <div class="category-icon">FF</div>
+              <h3>Frozen Foods</h3>
+              <p>Meat, seafood, ready meals, and ice-cold favorites.</p>
+            </article>
+            <article class="category-card" data-category="Retail Foods" tabindex="0" role="button" aria-pressed="false">
+              <div class="category-icon">RF</div>
+              <h3>Retail Foods</h3>
+              <p>Pantry staples, canned goods, sauces, and everyday basics.</p>
+            </article>
+            <article class="category-card" data-category="Sari-Sari Items" tabindex="0" role="button" aria-pressed="false">
+              <div class="category-icon">SS</div>
+              <h3>Sari-Sari Items</h3>
+              <p>Convenience picks and household must-haves for daily life.</p>
+            </article>
+            <article class="category-card" data-category="Drinks &amp; Beverages" tabindex="0" role="button" aria-pressed="false">
+              <div class="category-icon">DB</div>
+              <h3>Drinks &amp; Beverages</h3>
+              <p>Juices, soft drinks, coffee, and refreshing bottled options.</p>
+            </article>
+            <article class="category-card" data-category="Fresh Produce" tabindex="0" role="button" aria-pressed="false">
+              <div class="category-icon">FP</div>
+              <h3>Fresh Produce</h3>
+              <p>Vegetables and fruits selected to keep meals bright and healthy.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="products-section" id="shop">
+          <div class="section-heading deals-heading">
+            <div>
+              <p class="section-tag">Limited offers</p>
+              <h2 id="products-heading">Top Deals Today</h2>
+            </div>
+            <a class="text-link" id="show-all-products" href="#shop">See All Products</a>
+          </div>
+
+          <p class="products-status" id="products-status">Loading live inventory from the store database.</p>
+          <div class="products-grid" id="products-grid"></div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="cart-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

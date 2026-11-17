@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H&amp;T Frozen Foods Store Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="logo-block">
+          <span class="logo-badge">H&amp;T</span>
+          <div>
+            <p class="eyebrow">Private Staff Area</p>
+            <a class="logo-text" href="index.html">FROZEN FOODS STORE</a>
+          </div>
+        </div>
+
+        <div class="admin-header-copy">
+          <p class="section-tag">Admin Console</p>
+          <p class="ops-note">Sales, expenses, stock-in, and capital data stay on this private page only.</p>
+        </div>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Admin navigation">
+            <a href="#operations">Operations</a>
+            <a href="#inventory-preview">Inventory</a>
+            <a href="index.html">Storefront</a>
+          </nav>
+          <div class="social-links" aria-label="Social links">
+            <a
+              href="https://www.facebook.com/chona.sabellon.manguilimotan"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/linked_hans/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="operations-section" id="operations">
+          <div class="section-heading">
+            <div>
+              <p class="section-tag">Store Operations</p>
+              <h2>Capital, Inventory &amp; Daily Sales</h2>
+            </div>
+            <p class="ops-note" id="cloud-status">Connecting to cloud inventory...</p>
+          </div>
+
+          <div class="insights-grid">
+            <article class="insight-card">
+              <p class="insight-label">Starting Capital</p>
+              <h3 id="starting-capital">&#8369;100,000.00</h3>
+              <p class="insight-copy">Initial investment baseline for H&amp;T Frozen Foods Store.</p>
+            </article>
+            <article class="insight-card">
+              <p class="insight-label">Current Capital Balance</p>
+              <h3 id="capital-balance">&#8369;100,000.00</h3>
+              <p class="insight-copy">Capital minus total recorded expenses.</p>
+            </article>
+            <article class="insight-card">
+              <p class="insight-label">Breakeven Status</p>
+              <h3 class="status-text is-neutral" id="breakeven-status">Status: Breakeven</h3>
+              <p class="insight-copy" id="profit-summary">Sales and expenses are currently balanced.</p>
+            </article>
+          </div>
+
+          <div class="forms-grid admin-forms-grid">
+            <section class="form-card">
+              <div class="form-heading">
+                <p class="section-tag">Record Sale</p>
+                <h3>Sync Sold Inventory</h3>
+              </div>
+
+              <form id="sale-form" novalidate>
+                <div class="form-field">
+                  <label for="sale-product">Product</label>
+                  <select id="sale-product" required>
+                    <option value="">Select an item</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <span class="field-label">Unit</span>
+                  <div class="unit-toggle" role="group" aria-label="Sale unit toggle">
+                    <button class="unit-btn is-active" type="button" data-unit="pcs">pcs</button>
+                    <button class="unit-btn" type="button" data-unit="kg">kg</button>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="sale-quantity">Quantity</label>
+                    <input id="sale-quantity" type="number" min="0.01" step="1" placeholder="0" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="sale-price">Price Per Unit (&#8369;)</label>
+                    <input id="sale-price" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+                  </div>
+                </div>
+
+                <button class="form-submit" type="submit">Record Sale</button>
+              </form>
+            </section>
+
+            <section class="form-card">
+              <div class="form-heading">
+                <p class="section-tag">Record Expense</p>
+                <h3>Track Operational Costs</h3>
+              </div>
+
+              <form id="expense-form" novalidate>
+                <div class="form-field">
+                  <label for="expense-title">Expense Details</label>
+                  <input id="expense-title" type="text" placeholder="Electricity, delivery, supplies..." required />
+                </div>
+
+                <div class="form-field">
+                  <label for="expense-amount">Expense Amount (&#8369;)</label>
+                  <input id="expense-amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+                </div>
+
+                <button class="form-submit" type="submit">Add Expense</button>
+              </form>
+            </section>
+
+            <section class="form-card">
+              <div class="form-heading">
+                <p class="section-tag">Stock In</p>
+                <h3>Increase Inventory</h3>
+              </div>
+
+              <form id="stock-form" novalidate>
+                <div class="form-field">
+                  <label for="stock-product">Product</label>
+                  <select id="stock-product" required>
+                    <option value="">Select an item</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="stock-quantity">Quantity to Add</label>
+                  <input id="stock-quantity" type="number" min="0.01" step="1" placeholder="0" required />
+                </div>
+
+                <button class="form-submit" type="submit">Add Stock</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section class="products-section" id="inventory-preview">
+          <div class="section-heading deals-heading">
+            <div>
+              <p class="section-tag">Inventory Preview</p>
+              <h2 id="products-heading">Cloud Inventory</h2>
+            </div>
+            <a class="text-link" id="show-all-products" href="#inventory-preview">See All Products</a>
+          </div>
+
+          <p class="products-status" id="products-status">Loading live inventory.</p>
+          <div class="products-grid" id="products-grid"></div>
+          <p class="empty-state" id="empty-state" hidden>
+            Sorry, we couldn't find that item today.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="staff-login" href="index.html">Back to Storefront</a>
+      </footer>
+    </div>
+    <div class="toast" id="cart-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
