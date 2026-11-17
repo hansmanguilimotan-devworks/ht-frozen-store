@@ -1,5 +1,3 @@
-const SUPABASE_URL = "https://lsirfmnkycqeglfdmkco.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_uoCl_JsM4AiBX7HDy8LQow_IK-_YVrH";
 const STARTING_CAPITAL = 100000;
 const STORAGE_KEYS = {
   sales: "ht-sales-records",
@@ -7,40 +5,65 @@ const STORAGE_KEYS = {
 };
 
 const MASTER_PRODUCTS = [
-  { name: "Bola-Bola", category: "Frozen Foods", image: "./Images/Bola2.jpg", unit: "pcs", stock: 50 },
+  { name: "Bola-Bola", category: "Frozen Foods", image: "./Images/Bola2.jpg", unit: "pcs", stock: 100 },
   { name: "Burger Patties", category: "Frozen Foods", image: "./Images/Burger Patties.jpg", unit: "pcs", stock: 22.5 },
   { name: "Burger Patties Cheese", category: "Frozen Foods", image: "./Images/BurgerPattieswithCheese.jpg", unit: "pcs", stock: 18 },
   { name: "Calderon Longanisa", category: "Frozen Foods", image: "./Images/Calderon.jpg", unit: "pcs", stock: 60 },
   { name: "Champion Cheese Hotdog", category: "Frozen Foods", image: "./Images/Champion Cheese.jpg", unit: "pcs", stock: 35 },
   { name: "Lumpia", category: "Frozen Foods", image: "./Images/LumpiaGreen.jpg", unit: "pcs", stock: 25 },
-  { name: "Champion Hotdog", category: "Retail Foods", image: "./Images/Champion.jpg", unit: "pcs", stock: 12 },
-  { name: "Chicken Hotdog", category: "Retail Foods", image: "./Images/Chicken Hotdog.jpg", unit: "pcs", stock: 44 },
-  { name: "Cooked Ham", category: "Retail Foods", image: "./Images/Cooked Ham.jpg", unit: "pcs", stock: 90 },
-  { name: "Happy Hotdog", category: "Retail Foods", image: "./Images/Happy.jpg", unit: "pcs", stock: 80 },
-  { name: "Ngohiong", category: "Retail Foods", image: "./Images/Ngohiong.jpg", unit: "pcs", stock: 27 },
-  { name: "Skinless", category: "Retail Foods", image: "./Images/Skinless.jpg", unit: "pcs", stock: 50 },
-  { name: "Spam", category: "Sari-Sari Items", image: "./Images/Spam.jpg", unit: "pcs", stock: 36 },
-  { name: "Sunny Hotdog", category: "Sari-Sari Items", image: "./Images/Sunny.jpg", unit: "pcs", stock: 72 },
-  { name: "Sweet Ham", category: "Sari-Sari Items", image: "./Images/Sweet Ham.jpg", unit: "pcs", stock: 58 },
-  { name: "3-in-1 Coffee Sticks", category: "Sari-Sari Items", image: "https://via.placeholder.com/640x420/c6ad53/ffffff?text=Coffee+Sticks", unit: "pcs", stock: 46 },
-  { name: "Biscuits Variety Pack", category: "Sari-Sari Items", image: "https://via.placeholder.com/640x420/d2c07c/ffffff?text=Biscuits", unit: "pcs", stock: 41 },
-  { name: "Toothpaste Saver Tube", category: "Sari-Sari Items", image: "https://via.placeholder.com/640x420/c8b467/ffffff?text=Toothpaste", unit: "pcs", stock: 39 },
-  { name: "Tropical Juice Bundle", category: "Drinks & Beverages", image: "https://via.placeholder.com/640x420/53b47a/ffffff?text=Juice+Bundle", unit: "pcs", stock: 24 },
-  { name: "Sparkling Soda Pack", category: "Drinks & Beverages", image: "https://via.placeholder.com/640x420/48a88d/ffffff?text=Soda+Pack", unit: "pcs", stock: 31 },
-  { name: "Fresh Milk 1L", category: "Drinks & Beverages", image: "https://via.placeholder.com/640x420/55a9a0/ffffff?text=Fresh+Milk", unit: "pcs", stock: 29 },
-  { name: "KenR Longanisa", category: "Drinks & Beverages", image: "./Images/Kenr.jpg", unit: "pcs", stock: 67 },
-  { name: "Mineral Water Case", category: "Drinks & Beverages", image: "https://via.placeholder.com/640x420/69b2ad/ffffff?text=Mineral+Water", unit: "pcs", stock: 20 },
-  { name: "Chocolate Drink Mix", category: "Drinks & Beverages", image: "https://via.placeholder.com/640x420/73af7b/ffffff?text=Chocolate+Drink", unit: "pcs", stock: 33 },
-  { name: "Fresh Vegetable Value Set", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/5fa84f/ffffff?text=Vegetable+Set", unit: "kg", stock: 16.5 },
-  { name: "Crisp Romaine Lettuce", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/6eb05a/ffffff?text=Romaine+Lettuce", unit: "pcs", stock: 26 },
-  { name: "Sweet Red Apples", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/8db95e/ffffff?text=Red+Apples", unit: "kg", stock: 21.25 },
-  { name: "Ripe Cavendish Bananas", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/99c05c/ffffff?text=Bananas", unit: "kg", stock: 30 },
-  { name: "Vine Tomatoes Pack", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/7aac4f/ffffff?text=Tomatoes", unit: "kg", stock: 19.5 },
-  { name: "Green Calamansi Pouch", category: "Fresh Produce", image: "https://via.placeholder.com/640x420/84b652/ffffff?text=Calamansi", unit: "kg", stock: 14.75 }
+  { name: "Champion Hotdog", category: "Frozen Foods", image: "./Images/Champion.jpg", unit: "pcs", stock: 12 },
+  { name: "Chicken Hotdog", category: "Frozen Foods", image: "./Images/Chicken Hotdog.jpg", unit: "pcs", stock: 44 },
+  { name: "Cooked Ham", category: "Frozen Foods", image: "./Images/Cooked Ham.jpg", unit: "pcs", stock: 90 },
+  { name: "Happy Hotdog", category: "Frozen Foods", image: "./Images/Happy.jpg", unit: "pcs", stock: 80 },
+  { name: "Ngohiong", category: "Frozen Foods", image: "./Images/Ngohiong.jpg", unit: "pcs", stock: 27 },
+  { name: "Skinless", category: "Frozen Foods", image: "./Images/Skinless.jpg", unit: "pcs", stock: 50 },
+  { name: "Spam", category: "Frozen Foods", image: "./Images/Spam.jpg", unit: "pcs", stock: 36 },
+  { name: "Sunny Hotdog", category: "Frozen Foods", image: "./Images/Sunny.jpg", unit: "pcs", stock: 72 },
+  { name: "Sweet Ham", category: "Frozen Foods", image: "./Images/Sweet Ham.jpg", unit: "pcs", stock: 58 },
+  { name: "Dumanjug Longanisa", category: "Frozen Foods", image: "./Images/Dumanjug Longanisa.jpg", unit: "pcs", stock: 46 },
+  { name: "Patties", category: "Frozen Foods", image: "./Images/Patties.jpg", unit: "pcs", stock: 41 },
+  { name: "Tocino Dumanjug", category: "Frozen Foods", image: "./Images/Tocino Dumanjug.jpg", unit: "pcs", stock: 39 },
+  { name: "Tocino Roll", category: "Frozen Foods", image: "./Images/Tocino Roll.jpg", unit: "pcs", stock: 24 },
+  { name: "Tocino Roll Cheese", category: "Frozen Foods", image: "./Images/Tocino Roll Cheese.jpg", unit: "pcs", stock: 31 },
+  { name: "Tocino", category: "Frozen Foods", image: "./Images/Tocino.jpg", unit: "pcs", stock: 29 },
+  { name: "KenR Longanisa", category: "Frozen Foods", image: "./Images/Kenr.jpg", unit: "pcs", stock: 67 },
+  { name: "Virginia Hotdog", category: "Frozen Foods", image: "./Images/Virginia Hotdog.jpg", unit: "pcs", stock: 20 },
+  { name: "Star Nuggets", category: "Frozen Foods", image: "./Images/Star Nuggets.jpg", unit: "pcs", stock: 33 },
+  { name: "Chicken Nuggets", category: "Frozen Foods", image: "./Images/Chicken Nuggets.jpg", unit: "pcs", stock: 16.5 },
+  { name: "Longi", category: "Sari-Sari Items", image: "./Images/Longi.jpg", unit: "pcs", stock: 26 },
+  { name: "Canton", category: "Sari-Sari Items", image: "./Images/Canton.jpg", unit: "pcs", stock: 21.25 },
+  { name: "Barbeque Mix", category: "Sari-Sari Items", image: "./Images/Barbeque Mix.jpg", unit: "pcs", stock: 30 },
+  { name: "Tocino Mix", category: "Sari-Sari Items", image: "./Images/Tocino Mix.jpg", unit: "pcs", stock: 19.5 },
+  { name: "Tomato Sauce", category: "Sari-Sari Items", image: "./Images/Tomato Sauce.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Crispy Fry", category: "Sari-Sari Items", image: "./Images/Crispy Fry.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Coffee & Milk Powders", category: "Drinks & Beverages", image: "./Images/Coffee & Milk Powders.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Eggs", category: "Retail Foods", image: "./Images/Eggs.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Food Condense", category: "Drinks & Beverages", image: "./Images/Food Condense.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Food Mixs Powder", category: "Drinks & Beverages", image: "./Images/Food Mixs Powder.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Tender Juicy Hotdog", category: "Frozen Foods", image: "./Images/Tender Juicy Hotdog.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Small Soriso", category: "Retail Foods", image: "./Images/Small Soriso.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Soriso", category: "Retail Foods", image: "./Images/Soriso.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Spicy Soriso Small", category: "Retail Foods", image: "./Images/Spicy Soriso Small.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Spicy Soriso", category: "Retail Foods", image: "./Images/Spicy Soriso.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Fishball", category: "Retail Foods", image: "./Images/Fishball.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Tempura", category: "Retail Foods", image: "./Images/Tempura.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Whole Chicken", category: "Fresh Produce", image: "./Images/Whole Chicken.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Leg Quarter", category: "Fresh Produce", image: "./Images/Leg Quarter.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Breast", category: "Fresh Produce", image: "./Images/Chicken Breast.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Neck", category: "Fresh Produce", image: "./Images/Chicken Neck.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Backbone", category: "Fresh Produce", image: "./Images/Chicken Backbone.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Liver", category: "Fresh Produce", image: "./Images/Chicken Liver.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Intestine", category: "Fresh Produce", image: "./Images/Chicken Intestine.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Feet", category: "Fresh Produce", image: "./Images/Chicken Feet.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Head", category: "Fresh Produce", image: "./Images/Chicken Head.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Dugo", category: "Fresh Produce", image: "./Images/Chicken Dugo.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Chicken Butsi", category: "Fresh Produce", image: "./Images/Chicken Butsi.png", unit: "pcs", stock: 14.75 },
+  { name: "Oil", category: "Retail Foods", image: "./Images/Oil.jpg", unit: "pcs", stock: 14.75 },
+  { name: "Ketchup", category: "Retail Foods", image: "./Images/Ketchup.jpg", unit: "pcs", stock: 14.75 },
 ];
 
 const DEFAULT_PRICE_BY_NAME = {
-  "Bola-Bola": 42,
+  "Bola-Bola": 42,                    
   "Burger Patties": 50,
   "Burger Patties Cheese": 52,
   "Calderon Longanisa": 40,
@@ -55,22 +78,46 @@ const DEFAULT_PRICE_BY_NAME = {
   "Spam": 55,
   "Sunny Hotdog": 34,
   "Sweet Ham": 60,
-  "Laundry Soap Bar": 32,
-  "3-in-1 Coffee Sticks": 48,
-  "Biscuits Variety Pack": 85,
-  "Toothpaste Saver Tube": 54,
-  "Tropical Juice Bundle": 120,
-  "Sparkling Soda Pack": 99,
-  "Fresh Milk 1L": 92,
-  "Bottled Iced Tea": 35,
-  "Mineral Water Case": 180,
-  "Chocolate Drink Mix": 88,
-  "Fresh Vegetable Value Set": 140,
-  "Crisp Romaine Lettuce": 65,
-  "Sweet Red Apples": 165,
-  "Ripe Cavendish Bananas": 95,
-  "Vine Tomatoes Pack": 110,
-  "Green Calamansi Pouch": 75
+  "Dumanjug Longanisa": 40,
+  "Patties": 38,
+  "Tocino Dumanjug": 57,
+  "Tocino Roll": 45,
+  "Tocino Roll Cheese": 50,
+  "Tocino": 62,
+  "KenR Longanisa": 40,
+  "Virginia Hotdog": 62,
+  "Star Nuggets": 47,
+  "Chicken Nuggets": 67,
+  "Longi": 105,
+  "Canton": 55,
+  "Barbeque Mix": 42,
+  "Tocino Mix": 42,
+  "Tomato Sauce": 20,
+  "Crispy Fry": 24,
+  "Coffee & Milk Powders": 15,
+  "Eggs": 9.5,
+  "Food Condense": 50,
+  "Food Mixs Powder": 20,
+  "Tender Juicy Hotdog": 55,
+  "Small Soriso": 25,
+  "Soriso": 50,
+  "Spicy Soriso Small": 55,
+  "Spicy Soriso": 55,
+  "Fishball": 95,
+  "Tempura": 95,
+  "Whole Chicken": 185,
+  "Leg Quarter": 185,
+  "Chicken Breast": 215,
+  "Chicken Neck": 130,
+  "Chicken Backbone": 130,
+  "Chicken Liver": 210,
+  "Chicken Intestine": 110,
+  "Chicken Feet": 110,
+  "Chicken Head": 35,
+  "Chicken Dugo": 45,
+  "Chicken Butsi": 120,
+  "Oil": 33,
+  "Ketchup": 100
 };
 
 const elements = {
@@ -111,9 +158,6 @@ let searchTerm = "";
 let showingAll = true;
 let toastTimer;
 let activeUnit = "pcs";
-let supabaseClient = null;
-let inventoryChannel = null;
-let isFetchingProducts = false;
 let salesRecords = readRecords(STORAGE_KEYS.sales);
 let expenseRecords = readRecords(STORAGE_KEYS.expenses);
 
@@ -219,119 +263,17 @@ function getDefaultPrice(name) {
   return DEFAULT_PRICE_BY_NAME[name] ?? 0;
 }
 
-function setupInventoryRealtime() {
-  if (!supabaseClient || inventoryChannel) {
-    return;
-  }
-
-  inventoryChannel = supabaseClient
-    .channel("inventory-live-sync")
-    .on(
-      "postgres_changes",
-      { event: "*", schema: "public", table: "inventory" },
-      () => {
-        fetchProducts();
-      }
-    )
-    .subscribe();
-}
-
-function syncMasterProductsWithInventory(rows) {
-  rows.forEach((row) => {
-    const masterMatch = findMasterMatch(row.item_name || row.name);
-    const dbPrice = sanitizeNumber(row.price_per_unit);
-    const dbUnit = typeof row.unit === "string" && row.unit.trim() ? row.unit.trim().toLowerCase() : null;
-
-    if (!masterMatch) {
-      return;
-    }
-
-    if (dbPrice !== null && dbPrice > 0) {
-      masterMatch.price_per_unit = dbPrice;
-    }
-
-    if (dbUnit) {
-      masterMatch.unit = dbUnit;
-    }
-  });
-}
-
 function buildMasterCatalog() {
-  return MASTER_PRODUCTS.map((product, index) => ({
-    id: `master-${index}`,
-    cloudId: null,
-    ...product,
-    defaultPrice: getDefaultPrice(product.name),
-    price_per_unit: null,
-    stock: 0
-  }));
-}
-
-function mergeInventoryWithMasterCatalog(rows) {
-  const catalog = buildMasterCatalog();
-  const catalogByName = new Map(catalog.map((product) => [normalizeName(product.name), product]));
-  const extras = [];
-
-  rows.forEach((row, index) => {
-    const mappedRow = mapInventoryRow(row, index);
-    const key = normalizeName(mappedRow.name);
-    const existing = catalogByName.get(key);
-
-    if (existing) {
-      existing.cloudId = mappedRow.cloudId;
-      existing.id = mappedRow.cloudId ?? existing.id;
-      existing.name = mappedRow.name;
-      existing.category = mappedRow.category;
-      existing.defaultPrice = existing.defaultPrice || mappedRow.defaultPrice || getDefaultPrice(existing.name);
-      existing.price_per_unit = mappedRow.price_per_unit && mappedRow.price_per_unit > 0
-        ? mappedRow.price_per_unit
-        : existing.defaultPrice;
-      existing.image = mappedRow.image || existing.image;
-      existing.unit = mappedRow.unit || existing.unit;
-      existing.stock = mappedRow.stock ?? 0;
-      return;
-    }
-
-    extras.push({
-      ...mappedRow,
-      defaultPrice: mappedRow.defaultPrice || getDefaultPrice(mappedRow.name),
-      price_per_unit: mappedRow.price_per_unit && mappedRow.price_per_unit > 0
-        ? mappedRow.price_per_unit
-        : (mappedRow.defaultPrice || getDefaultPrice(mappedRow.name)),
-      unit: mappedRow.unit || "pcs",
-      stock: mappedRow.stock ?? 0
-    });
+  return MASTER_PRODUCTS.map((product, index) => {
+    const defaultPrice = getDefaultPrice(product.name);
+    return {
+      id: `master-${index}`,
+      ...product,
+      defaultPrice,
+      price_per_unit: defaultPrice,
+      stock: product.stock ?? 0
+    };
   });
-
-  return sortProductsForDisplay([...catalog, ...extras]);
-}
-
-function mapInventoryRow(row, index) {
-  const name = row.item_name || row.name || `Inventory Item ${index + 1}`;
-  const masterMatch = findMasterMatch(name);
-  const category = row.category || masterMatch?.category || inferCategoryFromName(name);
-  const liveUnit = row.unit;
-  const unit = typeof liveUnit === "string" && liveUnit.trim()
-    ? liveUnit.trim().toLowerCase()
-    : masterMatch?.unit || inferUnit(name);
-  const pricePerUnit = sanitizeNumber(
-    row.price_per_unit ?? row.price ?? row.unit_price ?? row.selling_price
-  );
-  const stock = sanitizeNumber(
-    row.on_hand_quantity ?? row.stock_quantity ?? row.quantity_on_hand ?? row.stock
-  );
-
-  return {
-    id: row.id ?? `cloud-${index}`,
-    cloudId: row.id ?? null,
-    name,
-    category,
-    defaultPrice: masterMatch?.defaultPrice || getDefaultPrice(name),
-    price_per_unit: pricePerUnit,
-    image: row.image_url || masterMatch?.image || createPlaceholderImage(name, category),
-    unit,
-    stock
-  };
 }
 
 function setCloudStatus(message, variant = "") {
@@ -345,18 +287,6 @@ function setCloudStatus(message, variant = "") {
   if (variant) {
     elements.cloudStatus.classList.add(variant);
   }
-}
-
-function createSupabaseClient() {
-  const sdk = window.supabase;
-
-  if (!sdk || typeof sdk.createClient !== "function") {
-    setCloudStatus("Supabase client library did not load. Using local fallback inventory.", "is-offline");
-    return null;
-  }
-
-  setCloudStatus("Connecting to Supabase inventory...");
-  return sdk.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
 function getVisibleProducts() {
@@ -436,7 +366,7 @@ function updateStatus(count) {
     return;
   }
 
-  elements.productsHeading.textContent = isAdminPage ? "Cloud Inventory" : "Top Deals Today";
+  elements.productsHeading.textContent = isAdminPage ? "Store Inventory" : "Top Deals Today";
 
   if (searchTerm) {
     elements.productsStatus.textContent = `Showing ${count} item${count === 1 ? "" : "s"} for "${searchTerm}".`;
@@ -463,9 +393,7 @@ function renderProducts() {
       const stockCopy = `${formatStockQuantity(item.stock ?? 0)} ${item.unit || "pcs"} available`;
       const isOutOfStock = Number(item.stock ?? 0) <= 0;
       const isLowStock = Number(item.stock ?? 0) > 0 && Number(item.stock ?? 0) < 5;
-      const displayPrice = item.cloudId !== null && item.price_per_unit !== null
-        ? `\u20B1${parseFloat(item.price_per_unit).toFixed(2)}`
-        : `\u20B1${parseFloat(item.defaultPrice || 0).toFixed(2)}`;
+      const displayPrice = `\u20B1${parseFloat(item.price_per_unit || item.defaultPrice || 0).toFixed(2)}`;
 
       return `
         <article class="product-card is-highlighted">
@@ -595,92 +523,12 @@ function syncSaleFormProduct() {
   setActiveUnit(product.unit || "pcs");
 }
 
-async function persistStockQuantity(product, nextStock) {
-  if (!supabaseClient || product.cloudId === null) {
-    return;
-  }
-
-  const { error } = await supabaseClient
-    .from("inventory")
-    .update({ on_hand_quantity: nextStock })
-    .eq("id", product.cloudId);
-
-  if (error) {
-    throw error;
-  }
-}
-
-async function fetchProducts() {
-  if (isFetchingProducts) {
-    return;
-  }
-
-  isFetchingProducts = true;
-  supabaseClient = createSupabaseClient();
-
+function fetchProducts() {
   inventoryProducts = sortProductsForDisplay(buildMasterCatalog());
-  renderProducts();
-
-  if (!supabaseClient) {
-    setCloudStatus("Showing local fallback inventory.", "is-offline");
-    populateAdminOptions();
-    renderProducts();
-    updateCapitalMetrics();
-    isFetchingProducts = false;
-    return;
-  }
-
-  try {
-    const { data, error } = await supabaseClient.from("inventory").select("*");
-
-    if (error) {
-      throw error;
-    }
-
-    if (!Array.isArray(data)) {
-      throw new Error("Inventory response was invalid.");
-    }
-
-    const masterCatalog = buildMasterCatalog();
-    const catalogByName = new Map(masterCatalog.map((item) => [normalizeName(item.name), item]));
-
-    data.forEach((row, index) => {
-      const mappedRow = mapInventoryRow(row, index);
-      const matchingItem = catalogByName.get(normalizeName(mappedRow.name));
-
-      if (matchingItem) {
-        matchingItem.cloudId = mappedRow.cloudId;
-        matchingItem.id = mappedRow.cloudId ?? matchingItem.id;
-        matchingItem.name = mappedRow.name;
-        matchingItem.category = mappedRow.category;
-        matchingItem.image = mappedRow.image || matchingItem.image;
-        matchingItem.unit = mappedRow.unit || matchingItem.unit;
-        matchingItem.stock = mappedRow.stock ?? 0;
-        matchingItem.price_per_unit = mappedRow.price_per_unit;
-        matchingItem.price = mappedRow.price_per_unit;
-        return;
-      }
-
-      masterCatalog.push({
-        ...mappedRow,
-        defaultPrice: getDefaultPrice(mappedRow.name),
-        price: mappedRow.price_per_unit,
-        price_per_unit: mappedRow.price_per_unit
-      });
-    });
-
-    inventoryProducts = sortProductsForDisplay(masterCatalog);
-    setCloudStatus("Live inventory connected to Supabase.", "is-online");
-    setupInventoryRealtime();
-  } catch {
-    setCloudStatus("Cloud inventory could not load. Showing local fallback catalog.", "is-offline");
-    inventoryProducts = sortProductsForDisplay(buildMasterCatalog());
-  }
-
+  setCloudStatus("Local catalog only. Database is disconnected.", "is-offline");
   populateAdminOptions();
   renderProducts();
   updateCapitalMetrics();
-  isFetchingProducts = false;
 }
 
 async function handleSaleSubmit(event) {
@@ -710,7 +558,6 @@ async function handleSaleSubmit(event) {
 
   try {
     if (nextStock !== null) {
-      await persistStockQuantity(product, nextStock);
       product.stock = nextStock;
     }
 
@@ -734,9 +581,9 @@ async function handleSaleSubmit(event) {
     renderProducts();
     elements.saleForm.reset();
     setActiveUnit(product.unit || "pcs");
-    showToast(`${product.name} sale recorded and inventory updated.`);
+    showToast(`${product.name} sale recorded on this page.`);
   } catch {
-    showToast("Sale could not be synced to inventory. Please try again.", "error");
+    showToast("Sale could not be recorded. Please try again.", "error");
   }
 }
 
@@ -767,7 +614,7 @@ function handleExpenseSubmit(event) {
   showToast(`${title} expense added successfully.`);
 }
 
-async function handleStockSubmit(event) {
+function handleStockSubmit(event) {
   event.preventDefault();
 
   const product = getProductById(elements.stockProduct?.value);
@@ -780,15 +627,10 @@ async function handleStockSubmit(event) {
 
   const nextStock = Number(((product.stock || 0) + quantity).toFixed(2));
 
-  try {
-    await persistStockQuantity(product, nextStock);
-    product.stock = nextStock;
-    renderProducts();
-    elements.stockForm.reset();
-    showToast(`${product.name} stock updated successfully.`);
-  } catch {
-    showToast("Stock update could not be synced to inventory.", "error");
-  }
+  product.stock = nextStock;
+  renderProducts();
+  elements.stockForm.reset();
+  showToast(`${product.name} stock updated on this page.`);
 }
 
 function setupStorefrontInteractions() {
@@ -890,9 +732,6 @@ function setupAdminInteractions() {
 
 setupStorefrontInteractions();
 setupAdminInteractions();
-window.addEventListener("focus", () => {
-  fetchProducts();
-});
 
 if (isStorefrontPage || isAdminPage) {
   fetchProducts();

@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>H&amp;T Frozen Foods Store Admin</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,7 +68,7 @@
               <p class="section-tag">Store Operations</p>
               <h2>Capital, Inventory &amp; Daily Sales</h2>
             </div>
-            <p class="ops-note" id="cloud-status">Connecting to cloud inventory...</p>
+            <p class="ops-note" id="cloud-status">Local catalog only. Database is disconnected.</p>
           </div>
 
           <div class="insights-grid">
@@ -183,7 +182,7 @@
             <a class="text-link" id="show-all-products" href="#inventory-preview">See All Products</a>
           </div>
 
-          <p class="products-status" id="products-status">Loading live inventory.</p>
+          <p class="products-status" id="products-status">Showing the local catalog.</p>
           <div class="products-grid" id="products-grid"></div>
           <p class="empty-state" id="empty-state" hidden>
             Sorry, we couldn't find that item today.
